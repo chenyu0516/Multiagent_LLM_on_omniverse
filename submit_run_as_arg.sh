@@ -31,14 +31,14 @@ if [ -z "$4" ] || [ "$4" == "none" ]; then
     ARGS="\"/run.sh \
            --download-src omniverse://nucleus.tpe1.local/$2 \
            --download-dest /src/your-script.py \
-           --upload-src /results/your-result.txt \
+           --upload-src /results/result.json \
            --upload-dest omniverse://nucleus.tpe1.local/$3 \
            './python.sh -u /src/your-script.py'\""
 else
     ARGS="\"/run.sh \
            --download-src omniverse://nucleus.tpe1.local/$2 \
            --download-dest /src/your-script.py \
-           --upload-src /results/your-result.txt \
+           --upload-src /results/result.json \
            --upload-dest omniverse://nucleus.tpe1.local/$3 \
            './python.sh -u /src/your-script.py $4'\""
 fi
