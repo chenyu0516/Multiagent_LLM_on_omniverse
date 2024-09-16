@@ -8,7 +8,7 @@ import pathlib
 
 # Download repository from github
 try:
-    result = subprocess.run(["git", "clone", os.getenv('GITHUB_URL'), "my_program"],
+    result = subprocess.run(["git", "clone", "https://github.com/chenyu0516/multiagent_ollama.git", "my_program"],
                             stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE,
                             text=True)
@@ -30,12 +30,12 @@ try:
     else:
         raise result.stderr
 except Exception as e:
-    raise f"An error occurred: {str(e)}"
+    raise RuntimeError(f"An error occurred: {str(e)}")
 
 
 
 # Send a GET request to the Flask app running in Docker
-response = requests.get('http://localhost:8000/run-script')
+response = requests.get('http://localhost:8000/run-script', params={'task': "Why the ocean is blue?"})
 omni_result = response.json()
 
 # (1) Write to output file
